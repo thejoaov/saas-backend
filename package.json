@@ -6,14 +6,19 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node server.js",
-		"test": "node ace test"
+		"test": "node ace test",
+		"dev": "adonis serve --dev",
+		"prettify": "prettier './**/*.js' --write",
+		"docker-up": "docker-compose -f docker/docker-compose.dev.yml up -d --build --force-recreate",
+		"docker-down": "docker-compose -f docker/docker-compose.dev.yml down",
+		"migrate": "node ace migration:run --force"
 	},
 	"keywords": [
 		"adonisjs",
 		"adonis-app"
 	],
-	"author": "",
-	"license": "UNLICENSED",
+	"author": "@thejoaov <jvictorsantos852@gmail.com>",
+	"license": "MIT",
 	"private": true,
 	"dependencies": {
 		"@adonisjs/ace": "^5.0.8",

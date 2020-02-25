@@ -26,6 +26,8 @@
 		"@adonisjs/lucid": "^6.1.3"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^8.3.5",
+		"@commitlint/config-angular": "^8.3.4",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.10.0",
 		"eslint-config-standard": "^14.1.0",
@@ -45,11 +47,17 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "lint-staged",
-			"post-merge": "yarn"
+			"pre-commit": "yarn prettify && lint-staged",
+			"post-merge": "yarn",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
 	},
 	"lint-staged": {
 		"*.js": "eslint --fix"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-angular"
+		]
 	}
 }

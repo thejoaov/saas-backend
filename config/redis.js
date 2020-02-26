@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -10,10 +10,10 @@
 |
 */
 
-const Env = use('Env')
+const Env = use("Env");
 
 module.exports = {
-  /*
+	/*
   |--------------------------------------------------------------------------
   | connection
   |--------------------------------------------------------------------------
@@ -21,9 +21,9 @@ module.exports = {
   | Redis connection to be used by default.
   |
   */
-  connection: Env.get('REDIS_CONNECTION', 'local'),
+	connection: Env.get("REDIS_CONNECTION", "local"),
 
-  /*
+	/*
   |--------------------------------------------------------------------------
   | local connection config
   |--------------------------------------------------------------------------
@@ -31,15 +31,15 @@ module.exports = {
   | Configuration for a named connection.
   |
   */
-  local: {
-    host: '127.0.0.1',
-    port: 6379,
-    password: null,
-    db: 0,
-    keyPrefix: ''
-  },
+	local: {
+		host: "127.0.0.1",
+		port: 6379,
+		password: null,
+		db: 0,
+		keyPrefix: "",
+	},
 
-  /*
+	/*
   |--------------------------------------------------------------------------
   | cluster config
   |--------------------------------------------------------------------------
@@ -47,18 +47,20 @@ module.exports = {
   | Below is the configuration for the redis cluster.
   |
   */
-  cluster: {
-    clusters: [{
-      host: '127.0.0.1',
-      port: 6379,
-      password: null,
-      db: 0
-    },
-    {
-      host: '127.0.0.1',
-      port: 6380,
-      password: null,
-      db: 0
-    }]
-  }
-}
+	cluster: {
+		clusters: [
+			{
+				host: "127.0.0.1",
+				port: 6379,
+				password: null,
+				db: 0,
+			},
+			{
+				host: "127.0.0.1",
+				port: 6380,
+				password: null,
+				db: 0,
+			},
+		],
+	},
+};

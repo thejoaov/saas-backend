@@ -22,6 +22,7 @@ const providers = [
 	"@adonisjs/redis/providers/RedisProvider",
 	"adonis-kue/providers/KueProvider",
 	"@adonisjs/mail/providers/MailProvider",
+	"adonis-acl/providers/AclProvider",
 ];
 
 /*
@@ -30,12 +31,14 @@ const providers = [
 |--------------------------------------------------------------------------
 |
 | Ace providers are required only when running ace commands. For example
-| Providers for migrations, tests etc.
+| Providers for migrations, tests etc.  'adonis-acl/providers/CommandsProvider',
+
 |
 */
 const aceProviders = [
 	"@adonisjs/lucid/providers/MigrationsProvider",
 	"adonis-kue/providers/CommandsProvider",
+	"adonis-acl/providers/CommandsProvider",
 ];
 
 /*
@@ -50,7 +53,7 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {};
+const aliases = { Role: "Adonis/Acl/Role", Permission: "Adonis/Acl/Permission" };
 
 /*
 |--------------------------------------------------------------------------

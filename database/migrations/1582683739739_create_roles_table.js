@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-const Schema = use("Schema");
+const Schema = use('Schema');
 
 class RolesTableSchema extends Schema {
 	up() {
-		this.create("roles", (table) => {
+		this.create('roles', (table) => {
 			table.increments();
 			table
-				.string("slug")
+				.string('slug')
 				.notNullable()
 				.unique();
 			table
-				.string("name")
+				.string('name')
 				.notNullable()
 				.unique();
-			table.text("description").nullable();
+			table.text('description').nullable();
 			table.timestamps();
 		});
 	}
 
 	down() {
-		this.drop("roles");
+		this.drop('roles');
 	}
 }
 

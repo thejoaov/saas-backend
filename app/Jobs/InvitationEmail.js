@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const Mail = use("Mail");
+const Mail = use('Mail');
 
 class InvitationEmail {
 	// If this getter isn't provided, it will default to 1.
@@ -11,17 +11,21 @@ class InvitationEmail {
 
 	// This is required. This is a unique key used to identify this job.
 	static get key() {
-		return "InvitationEmail";
+		return 'InvitationEmail';
 	}
 
 	// This is where the work is done.
 	async handle({ user, team, email }) {
-		await Mail.send(["emails.invitation"], { team: team.name, user: user.name }, (message) => {
-			message
-				.to(email)
-				.from("noreply@pmanage.com.br", "Equipe PManage Teams")
-				.subject(`Venha para o time ${team.name}!`);
-		});
+		await Mail.send(
+			['emails.invitation'],
+			{ team: team.name, user: user.name },
+			(message) => {
+				message
+					.to(email)
+					.from('noreply@pmanage.com.br', 'Equipe PManage Teams')
+					.subject(`Venha para o time ${team.name}!`);
+			}
+		);
 	}
 }
 

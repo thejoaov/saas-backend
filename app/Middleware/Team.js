@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -12,13 +12,13 @@ class Team {
 	async handle({ request, response, auth }, next) {
 		// call next to advance the request
 
-		const slug = request.header("TEAM");
+		const slug = request.header('TEAM');
 
 		let team = null;
 		if (slug) {
 			team = await auth.user
 				.teams()
-				.where("slug", slug)
+				.where('slug', slug)
 				.first();
 		}
 

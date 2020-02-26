@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class Team {
 	get validateAll() {
@@ -8,7 +8,7 @@ class Team {
 	get rules() {
 		return {
 			// validation rules
-			name: "required",
+			name: 'required',
 		};
 	}
 }

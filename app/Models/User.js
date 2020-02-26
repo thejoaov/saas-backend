@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use("Model");
+const Model = use('Model');
 
 /** @type {import('@adonisjs/framework/src/Hash')} */
-const Hash = use("Hash");
+const Hash = use('Hash');
 
 class User extends Model {
 	static boot() {
@@ -14,7 +14,7 @@ class User extends Model {
 		 * A hook to hash the user password before saving
 		 * it to the database.
 		 */
-		this.addHook("beforeSave", async (userInstance) => {
+		this.addHook('beforeSave', async (userInstance) => {
 			if (userInstance.dirty.password) {
 				userInstance.password = await Hash.make(userInstance.password);
 			}
@@ -22,7 +22,7 @@ class User extends Model {
 	}
 
 	teamJoins() {
-		return this.hasMany("App/Models/UserTeam");
+		return this.hasMany('App/Models/UserTeam');
 	}
 
 	/**
@@ -36,16 +36,18 @@ class User extends Model {
 	 * @return {Object}
 	 */
 	tokens() {
-		return this.hasMany("App/Models/Token");
+		return this.hasMany('App/Models/Token');
 	}
 
 	teams() {
-		return this.belongsToMany("App/Models/Team").pivotModel("App/Models/UserTeam");
+		return this.belongsToMany('App/Models/Team').pivotModel(
+			'App/Models/UserTeam'
+		);
 	}
 
 	async is(expression) {
 		const team = await this.teamJoins()
-			.where("team_id", this.currentTeam)
+			.where('team_id', this.currentTeam)
 			.first();
 
 		return team.is(expression);
@@ -53,7 +55,7 @@ class User extends Model {
 
 	async can(expression) {
 		const team = await this.teamJoins()
-			.where("team_id", this.currentTeam)
+			.where('team_id', this.currentTeam)
 			.first();
 
 		return team.can(expression);
@@ -61,7 +63,7 @@ class User extends Model {
 
 	async scope(required) {
 		const team = await this.teamJoins()
-			.where("team_id", this.currentTeam)
+			.where('team_id', this.currentTeam)
 			.first();
 
 		return team.scope(required);

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const User = use("App/Models/User");
-const Kue = use("Kue");
-const Job = use("App/Jobs/InvitationEmail");
+const User = use('App/Models/User');
+const Kue = use('Kue');
+const Job = use('App/Jobs/InvitationEmail');
 
 const InviteHook = (exports = module.exports = {});
 
 InviteHook.sendInvitationEmail = async (invite) => {
 	const { email } = invite;
 
-	const invited = await User.findBy("email", email);
+	const invited = await User.findBy('email', email);
 
 	if (invited) {
 		await invited.teams().attach(invite.team_id);

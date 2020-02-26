@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const UserTeam = use("App/Models/UserTeam");
+const UserTeam = use('App/Models/UserTeam');
 /**
  * Resourceful controller for interacting with permissions
  */
@@ -20,8 +20,8 @@ class PermissionController {
 	 */
 	async show({ request, auth }) {
 		const teamJoin = await UserTeam.query()
-			.where("team_id", request.team.id)
-			.where("user_id", auth.user.id)
+			.where('team_id', request.team.id)
+			.where('user_id', auth.user.id)
 			.first();
 
 		return {

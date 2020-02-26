@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
-const Role = use("Adonis/Acl/Role");
+const Role = use('Adonis/Acl/Role');
 
 class RoleController {
 	async index() {

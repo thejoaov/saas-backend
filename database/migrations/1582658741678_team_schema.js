@@ -1,23 +1,23 @@
-"use strict";
+'use strict';
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use("Schema");
+const Schema = use('Schema');
 
 class TeamSchema extends Schema {
 	up() {
-		this.create("teams", (table) => {
+		this.create('teams', (table) => {
 			table.increments();
-			table.string("name").notNullable();
+			table.string('name').notNullable();
 			table
-				.integer("user_id")
+				.integer('user_id')
 				.unsigned()
 				.notNullable()
-				.references("id")
-				.inTable("users")
-				.onUpdate("CASCADE")
-				.onDelete("CASCADE");
+				.references('id')
+				.inTable('users')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
 			table
-				.string("slug")
+				.string('slug')
 				.notNullable()
 				.unique();
 			table.timestamps();
@@ -25,7 +25,7 @@ class TeamSchema extends Schema {
 	}
 
 	down() {
-		this.drop("teams");
+		this.drop('teams');
 	}
 }
 

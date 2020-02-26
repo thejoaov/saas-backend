@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const UserTeam = use("App/Models/UserTeam");
+const UserTeam = use('App/Models/UserTeam');
 
 /**
  * Resourceful controller for interacting with members
@@ -21,9 +21,9 @@ class MemberController {
 	 */
 	async index({ request, response, view }) {
 		const members = await UserTeam.query()
-			.where("team_id", request.team.id)
-			.with("user")
-			.with("roles")
+			.where('team_id', request.team.id)
+			.with('user')
+			.with('roles')
 			.fetch();
 
 		return members;
@@ -38,7 +38,7 @@ class MemberController {
 	 * @param {Response} ctx.response
 	 */
 	async update({ params, request, response }) {
-		const roles = request.input("roles");
+		const roles = request.input('roles');
 
 		const teamJoin = await UserTeam.find(params.id);
 

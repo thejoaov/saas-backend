@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class Invite {
 	get validateAll() {
@@ -8,8 +8,8 @@ class Invite {
 	get rules() {
 		return {
 			// validation rules
-			invites: "required|array",
-			"invites.*": "required|email",
+			invites: 'required|array',
+			'invites.*': 'required|email',
 		};
 	}
 }

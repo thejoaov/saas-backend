@@ -1,35 +1,35 @@
-"use strict";
+'use strict';
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use("Schema");
+const Schema = use('Schema');
 
 class InviteSchema extends Schema {
 	up() {
-		this.create("invites", (table) => {
+		this.create('invites', (table) => {
 			table.increments();
 			table
-				.integer("team_id")
+				.integer('team_id')
 				.unsigned()
 				.notNullable()
-				.references("id")
-				.inTable("teams")
-				.onUpdate("CASCADE")
-				.onDelete("CASCADE");
+				.references('id')
+				.inTable('teams')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
 			table
-				.integer("user_id")
+				.integer('user_id')
 				.unsigned()
 				.notNullable()
-				.references("id")
-				.inTable("users")
-				.onUpdate("CASCADE")
-				.onDelete("CASCADE");
-			table.string("email").notNullable();
+				.references('id')
+				.inTable('users')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
+			table.string('email').notNullable();
 			table.timestamps();
 		});
 	}
 
 	down() {
-		this.drop("invites");
+		this.drop('invites');
 	}
 }
 

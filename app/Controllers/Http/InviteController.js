@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Invite = use("App/Models/Invite");
+const Invite = use('App/Models/Invite');
 
 /**
  * Resourceful controller for interacting with invites
@@ -20,7 +20,7 @@ class InviteController {
 	 * @param {Response} ctx.response
 	 */
 	async store({ request, auth }) {
-		const invites = request.input("invites");
+		const invites = request.input('invites');
 
 		const data = invites.map((email) => ({
 			email,

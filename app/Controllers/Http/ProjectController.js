@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -32,7 +32,7 @@ class ProjectController {
 	 * @param {Response} ctx.response
 	 */
 	async store({ request }) {
-		const data = request.only(["title"]);
+		const data = request.only(['title']);
 
 		const project = request.team.projects().create(data);
 
@@ -51,7 +51,7 @@ class ProjectController {
 	async show({ params, request }) {
 		const project = await request.team
 			.projects()
-			.where("id", params.id)
+			.where('id', params.id)
 			.first();
 
 		return project;
@@ -66,10 +66,10 @@ class ProjectController {
 	 * @param {Response} ctx.response
 	 */
 	async update({ params, request, response }) {
-		const data = request.only(["title"]);
+		const data = request.only(['title']);
 		const project = await request.team
 			.projects()
-			.where("id", params.id)
+			.where('id', params.id)
 			.first();
 
 		project.merge(data);
@@ -90,7 +90,7 @@ class ProjectController {
 	async destroy({ params, request, response }) {
 		const project = await request.team
 			.projects()
-			.where("id", params.id)
+			.where('id', params.id)
 			.first();
 
 		await project.delete();

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class Session {
 	get validateAll() {
@@ -8,8 +8,8 @@ class Session {
 	get rules() {
 		return {
 			// validation rules
-			email: "required|email",
-			password: "required",
+			email: 'required|email',
+			password: 'required',
 		};
 	}
 }

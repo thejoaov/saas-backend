@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Role = use("Adonis/Acl/Role");
+const Role = use('Adonis/Acl/Role');
 
 /**
  * Resourceful controller for interacting with teams
@@ -33,7 +33,7 @@ class TeamController {
 	 * @param {Response} ctx.response
 	 */
 	async store({ request, auth }) {
-		const data = request.only(["name"]);
+		const data = request.only(['name']);
 
 		const team = await auth.user.teams().create({
 			...data,
@@ -42,10 +42,10 @@ class TeamController {
 
 		const teamJoin = await auth.user
 			.teamJoins()
-			.where("team_id", team.id)
+			.where('team_id', team.id)
 			.first();
 
-		const admin = await Role.findBy("slug", "administrator");
+		const admin = await Role.findBy('slug', 'administrator');
 
 		await teamJoin.roles().attach([admin.id]);
 
@@ -64,7 +64,7 @@ class TeamController {
 	async show({ params, auth }) {
 		const team = await auth.user
 			.teams()
-			.where("teams.id", params.id)
+			.where('teams.id', params.id)
 			.first();
 
 		return team;
@@ -79,11 +79,11 @@ class TeamController {
 	 * @param {Response} ctx.response
 	 */
 	async update({ params, request, auth }) {
-		const data = request.only(["name"]);
+		const data = request.only(['name']);
 
 		const team = await auth.user
 			.teams()
-			.where("teams.id", params.id)
+			.where('teams.id', params.id)
 			.first();
 
 		team.merge(data);
@@ -104,7 +104,7 @@ class TeamController {
 	async destroy({ params, auth }) {
 		const team = await auth.user
 			.teams()
-			.where("teams.id", params.id)
+			.where('teams.id', params.id)
 			.first();
 
 		await team.delete();

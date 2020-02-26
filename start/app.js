@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -11,18 +11,18 @@
 |
 */
 const providers = [
-	"@adonisjs/framework/providers/AppProvider",
-	"@adonisjs/framework/providers/ViewProvider",
-	"@adonisjs/auth/providers/AuthProvider",
-	"@adonisjs/validator/providers/ValidatorProvider",
-	"@adonisjs/bodyparser/providers/BodyParserProvider",
-	"@adonisjs/cors/providers/CorsProvider",
-	"@adonisjs/lucid/providers/LucidProvider",
-	"@adonisjs/lucid-slugify/providers/SlugifyProvider",
-	"@adonisjs/redis/providers/RedisProvider",
-	"adonis-kue/providers/KueProvider",
-	"@adonisjs/mail/providers/MailProvider",
-	"adonis-acl/providers/AclProvider",
+	'@adonisjs/framework/providers/AppProvider',
+	'@adonisjs/framework/providers/ViewProvider',
+	'@adonisjs/auth/providers/AuthProvider',
+	'@adonisjs/validator/providers/ValidatorProvider',
+	'@adonisjs/bodyparser/providers/BodyParserProvider',
+	'@adonisjs/cors/providers/CorsProvider',
+	'@adonisjs/lucid/providers/LucidProvider',
+	'@adonisjs/lucid-slugify/providers/SlugifyProvider',
+	'@adonisjs/redis/providers/RedisProvider',
+	'adonis-kue/providers/KueProvider',
+	'@adonisjs/mail/providers/MailProvider',
+	'adonis-acl/providers/AclProvider',
 ];
 
 /*
@@ -36,9 +36,9 @@ const providers = [
 |
 */
 const aceProviders = [
-	"@adonisjs/lucid/providers/MigrationsProvider",
-	"adonis-kue/providers/CommandsProvider",
-	"adonis-acl/providers/CommandsProvider",
+	'@adonisjs/lucid/providers/MigrationsProvider',
+	'adonis-kue/providers/CommandsProvider',
+	'adonis-acl/providers/CommandsProvider',
 ];
 
 /*
@@ -53,7 +53,10 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = { Role: "Adonis/Acl/Role", Permission: "Adonis/Acl/Permission" };
+const aliases = {
+	Role: 'Adonis/Acl/Role',
+	Permission: 'Adonis/Acl/Permission',
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +68,6 @@ const aliases = { Role: "Adonis/Acl/Role", Permission: "Adonis/Acl/Permission" }
 */
 const commands = [];
 
-const jobs = ["App/Jobs/InvitationEmail"];
+const jobs = ['App/Jobs/InvitationEmail'];
 
 module.exports = { providers, aceProviders, aliases, commands, jobs };

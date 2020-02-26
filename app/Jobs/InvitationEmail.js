@@ -1,6 +1,7 @@
 'use strict';
 
 const Mail = use('Mail');
+const Env = use('Env');
 
 class InvitationEmail {
 	// If this getter isn't provided, it will default to 1.
@@ -18,7 +19,11 @@ class InvitationEmail {
 	async handle({ user, team, email }) {
 		await Mail.send(
 			['emails.invitation'],
-			{ team: team.name, user: user.name },
+			{
+				team: team.name,
+				user: user.name,
+				redirect_url: Env.get('REDIRECT_URL'),
+			},
 			(message) => {
 				message
 					.to(email)

@@ -14,13 +14,14 @@
 const User = use('App/Models/User');
 const Role = use('Adonis/Acl/Role');
 const Permission = use('Adonis/Acl/Permission');
+const Env = use('Env');
 
 class DatabaseSeeder {
 	async run() {
 		const user = await User.create({
-			name: 'João Victor',
-			email: 'jvictorsantos852@gmail.com',
-			password: '12345678',
+			name: 'Admin Adminosvaldo',
+			email: 'admin@admin.com',
+			password: Env.get('ADMIN_PASSWORD'),
 		});
 
 		const createInvite = await Permission.create({
@@ -52,7 +53,7 @@ class DatabaseSeeder {
 		await moderator.permissions().attach([createProject.id]);
 
 		const team = await user.teams().create({
-			name: 'i.ti',
+			name: 'PManage Admin Especial Team',
 			user_id: user.id,
 		});
 

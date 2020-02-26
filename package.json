@@ -58,7 +58,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn prettify && lint-staged",
+			"pre-commit": "lint-staged && yarn prettify",
 			"post-merge": "yarn",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}

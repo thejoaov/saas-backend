@@ -13,7 +13,7 @@
 		"jobs": "node ace kue:listen",
 		"docker-up": "docker-compose -f docker/docker-compose.dev.yml up -d --build --force-recreate",
 		"docker-down": "docker-compose -f docker/docker-compose.dev.yml down",
-		"prestart": "node ace migration:run --force && node ace seed"
+		"prestart": "node ace migration:run --force && node ace seed --force"
 	},
 	"keywords": [
 		"adonisjs",

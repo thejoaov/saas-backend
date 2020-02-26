@@ -12,7 +12,9 @@
 */
 const providers = [
 	"@adonisjs/framework/providers/AppProvider",
+	"@adonisjs/framework/providers/ViewProvider",
 	"@adonisjs/auth/providers/AuthProvider",
+	"@adonisjs/validator/providers/ValidatorProvider",
 	"@adonisjs/bodyparser/providers/BodyParserProvider",
 	"@adonisjs/cors/providers/CorsProvider",
 	"@adonisjs/lucid/providers/LucidProvider",
@@ -20,7 +22,6 @@ const providers = [
 	"@adonisjs/redis/providers/RedisProvider",
 	"adonis-kue/providers/KueProvider",
 	"@adonisjs/mail/providers/MailProvider",
-	"@adonisjs/framework/providers/ViewProvider",
 ];
 
 /*

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -8,86 +8,93 @@
  * Resourceful controller for interacting with projects
  */
 class ProjectController {
-  /**
-   * Show a list of all projects.
-   * GET projects
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async index ({ request, response, view }) {
-  }
+	/**
+	 * Show a list of all projects.
+	 * GET projects
+	 *
+	 * @param {object} ctx
+	 * @param {Request} ctx.request
+	 * @param {Response} ctx.response
+	 * @param {View} ctx.view
+	 */
+	async index({ request }) {
+		const projects = request.team.projects().fetch();
 
-  /**
-   * Render a form to be used for creating a new project.
-   * GET projects/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
+		return projects;
+	}
 
-  /**
-   * Create/save a new project.
-   * POST projects
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async store ({ request, response }) {
-  }
+	/**
+	 * Create/save a new project.
+	 * POST projects
+	 *
+	 * @param {object} ctx
+	 * @param {Request} ctx.request
+	 * @param {Response} ctx.response
+	 */
+	async store({ request }) {
+		const data = request.only(['title']);
 
-  /**
-   * Display a single project.
-   * GET projects/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
-  }
+		const project = request.team.projects().create(data);
 
-  /**
-   * Render a form to update an existing project.
-   * GET projects/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
+		return project;
+	}
 
-  /**
-   * Update project details.
-   * PUT or PATCH projects/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {
-  }
+	/**
+	 * Display a single project.
+	 * GET projects/:id
+	 *
+	 * @param {object} ctx
+	 * @param {Request} ctx.request
+	 * @param {Response} ctx.response
+	 * @param {View} ctx.view
+	 */
+	async show({ params, request }) {
+		const project = await request.team
+			.projects()
+			.where('id', params.id)
+			.first();
 
-  /**
-   * Delete a project with id.
-   * DELETE projects/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy ({ params, request, response }) {
-  }
+		return project;
+	}
+
+	/**
+	 * Update project details.
+	 * PUT or PATCH projects/:id
+	 *
+	 * @param {object} ctx
+	 * @param {Request} ctx.request
+	 * @param {Response} ctx.response
+	 */
+	async update({ params, request, response }) {
+		const data = request.only(['title']);
+		const project = await request.team
+			.projects()
+			.where('id', params.id)
+			.first();
+
+		project.merge(data);
+
+		await project.save();
+
+		return project;
+	}
+
+	/**
+	 * Delete a project with id.
+	 * DELETE projects/:id
+	 *
+	 * @param {object} ctx
+	 * @param {Request} ctx.request
+	 * @param {Response} ctx.response
+	 */
+	async destroy({ params, request, response }) {
+		const project = await request.team
+			.projects()
+			.where('id', params.id)
+			.first();
+
+		await project.delete();
+	}
 }
 
-module.exports = ProjectController
+module.exports = ProjectController;

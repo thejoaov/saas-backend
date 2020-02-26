@@ -5,14 +5,15 @@
 	"description": "Adonisjs boilerplate for API server with pre-configured JWT",
 	"main": "index.js",
 	"scripts": {
-		"start": "node server.js",
+		"start": "concurrently -k \"yarn server\" \"yarn jobs\"",
+		"server": "node server.js",
 		"test": "node ace test",
 		"dev": "adonis serve --dev",
 		"prettify": "prettier './**/*.js' --write",
 		"jobs": "node ace kue:listen",
 		"docker-up": "docker-compose -f docker/docker-compose.dev.yml up -d --build --force-recreate",
 		"docker-down": "docker-compose -f docker/docker-compose.dev.yml down",
-		"migrate": "node ace migration:run --force"
+		"prestart": "node ace migration:run --force && node ace seed"
 	},
 	"keywords": [
 		"adonisjs",
@@ -36,6 +37,7 @@
 		"@adonisjs/validator": "^5.0.6",
 		"adonis-acl": "^1.1.1",
 		"adonis-kue": "^5.0.1",
+		"concurrently": "^5.1.0",
 		"pg": "^7.18.2"
 	},
 	"devDependencies": {
